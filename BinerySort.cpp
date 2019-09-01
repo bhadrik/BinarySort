@@ -49,7 +49,7 @@ void my_sort(int *arr,short bitNo, short length){
 	else{
 		for(int i=0;i<length;i++){
 			if((arr[i] >> bitNo) & 1){
-				realloc(subarray,sizeof(int));
+				subarray = (int*)realloc(subarray,sizeof(int));
 				subarray[newLength] = arr[i];
 				newLength++;
 				gone=1;
