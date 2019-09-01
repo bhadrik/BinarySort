@@ -5,14 +5,14 @@
 using namespace std;
 int globalArray[5];
 short ptr=0;
-void my_sort(int*, short, short);
+void binerySort(int*, short, short);
 
 int main()
 {
 	int arr[n]={50,83,95,14,63};
 	
 	for(short i=6;i>=0;i--){
-		my_sort(arr,i,n);
+		binerySort(arr,i,n);
 		for(int i=0;i<n;i++){
 			for(int j=0;j<n;j++){
 				if(globalArray[i]==arr[j])
@@ -25,7 +25,7 @@ int main()
 	return 0;
 }
 
-void my_sort(int *arr,short bitNo, short length){
+void binerySort(int *arr,short bitNo, short length){
 	int *subarray = (int*)malloc(0);
 	short newLength = 0;
 	bool gone=0;
@@ -58,8 +58,8 @@ void my_sort(int *arr,short bitNo, short length){
 	}
 	if(length>2){
 		if(!gone)
-			my_sort(arr,bitNo-1,length);
+			binerySort(arr,bitNo-1,length);
 		else
-			my_sort(subarray,bitNo-1,newLength);
+			binerySort(subarray,bitNo-1,newLength);
 	}
 }
