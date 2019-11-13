@@ -1,5 +1,5 @@
-# BineraySort
-Bineray sort is a program that sort the given numbers using algorithem which is created by my self.
+# BinarySort
+Binary sort is a program that sort the given array of numbers using algorithem which is created by my self.
 
 # Working of algorithem
 This algorithem is work on binery value of the numbers.
