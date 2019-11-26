@@ -1,6 +1,7 @@
 //RAW CODE
 
 #include<iostream>
+#include<malloc.h>
 #define n 5
 using namespace std;
 int globalArray[5];
