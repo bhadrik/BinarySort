@@ -1,4 +1,4 @@
-//RAW CODE
+//RAW CODE may not work if array contain identical values.
 
 #include<iostream>
 #include<malloc.h>
