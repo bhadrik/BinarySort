@@ -1,5 +1,5 @@
 # BinarySort
-Binary sort is a program that sorts the given array of numbers based on its binary value.
+Binary sort is an algorithm that sorts the given array of numbers based on its binary value.
 
 # Working of algorithm
 This algorithm is work on binery value of the numbers.
