@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
+#include <string.h>
 int N = 10;
 
 //i1 <-> i2 position swap in "data" array
@@ -59,7 +60,7 @@ int main(int argc, char* args[]) {
 	if (argc == 3)
 		N = atoi(args[1]);
 	else
-		printf("Not proper argument given!\n");
+		printf("Check given argument!\n");
 
 	clock_t startTime, endTime;
 	double time;
@@ -69,28 +70,41 @@ int main(int argc, char* args[]) {
 
 	FILE* fptr;
 		
-	if (argc == 3)
+	if (argc == 3 || argc == 0)
 		fptr = fopen(args[2], "r");
 	else
-		printf("Not proper argument given!\n");
+		printf("Check given argument!\n");
 
 	if (fptr == NULL) { printf("File not found!!\n"); exit(1); }
 
 	while (fscanf(fptr, "%d", &data[i]) == 1) { i++; }
 
 	startTime = clock();
+	//printf("Start: %f\n", (float)startTime);
 
 	//First binarySort call
 	binarySort(data, bitNo-1, &lowerBound, &upperBound);
 
 	endTime = clock();
+	fclose(fptr);
+
+	//printf("End: %f\n", (float)endTime);
 
 	time = ((double)(endTime - startTime)) / CLOCKS_PER_SEC;
-	printf("Taken time: %f\n", time);
 
-	displayData(data);
+	char name[20]="";
 
-	printf("\nTaken time: %fs\n", time);
+	strcpy(name, "Sorted ");
+	strcat(name, args[2]);
+
+	fptr = fopen(name, "w");
+
+	for (i = 0; i < N; i++)
+		fprintf(fptr, "%d ", data[i]);
+
+	fclose(fptr);
+
+	printf("%s file generated in %.3fs", name, time);
 
 	/*
 	* BitNo is most importent thing in this algorithm
