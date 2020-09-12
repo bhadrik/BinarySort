@@ -2,11 +2,11 @@
 Binary sort is an algorithm that sorts the given array of numbers based on its binary value.
 
 # How to use
-> First compile both C file using following command: "gcc -o BinarySort BinarySort.c" & "gcc -o Generator Generator.c"
-> Then run "Generator.exe" file using following command: "Generator.exe 10000 Data.txt" - Here 10000 is size of array which is going to be generated.
-> It will generate Data.txt file, filled with 10000 random numbers.
-> Then run "BinarySort.exe" file using following command: "BinarySort.exe 10000 Data.txt" for windows & "./BinarySort 10000 Data.txt" for linux
-> It will use Data.txt file as an input to the algorithm and sort thos data and will generate "Sorted Data.txt" file which is sorted output.
+1. First compile both C file using following command: "gcc -o BinarySort BinarySort.c" & "gcc -o Generator Generator.c"
+2. Then run "Generator.exe" file using following command: "Generator.exe 10000 Data.txt" - Here 10000 is size of array which is going to be generated.
+3. It will generate Data.txt file, filled with 10000 random numbers.
+4. Then run "BinarySort.exe" file using following command: "BinarySort.exe 10000 Data.txt" for windows & "./BinarySort 10000 Data.txt" for linux
+5. It will use Data.txt file as an input to the algorithm and sort thos data and will generate "Sorted Data.txt" file which is sorted output.
 
 # Working of an algorithm
 This algorithm is work on binery value of the numbers.
