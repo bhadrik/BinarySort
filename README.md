@@ -8,10 +8,16 @@ Binary sort is an algorithm that sorts the given array of numbers based on its b
 4. Then run "BinarySort.exe" file using following command: "BinarySort.exe 10000 Data.txt" for windows & "./BinarySort 10000 Data.txt" for linux
 5. It will use Data.txt file as an input to the algorithm and sort thos data and will generate "Sorted Data.txt" file which is sorted output.
 
+```
+git status
+git add
+git commit
+```
+
 # Working of an algorithm
 * This algorithm is work on binery value of the numbers.
 
-'''
+```
 8 - 1000
 5 - 0011
 6 - 0110
@@ -27,4 +33,4 @@ Binary sort is an algorithm that sorts the given array of numbers based on its b
                  with number at U   sorted.            *bitNo* 3.         with number at U
                  and devide the                                           and decide the 
                  array.                                                   array.
-'''
+```
