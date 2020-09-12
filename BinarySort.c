@@ -65,7 +65,7 @@ int main(int argc, char* args[]) {
 	clock_t startTime, endTime;
 	double time;
 	int data[N];
-	int lowerBound = 0, upperBound = N - 1, bitNo = 16;
+	int lowerBound = 0, upperBound = N - 1, bitNo = sizeof(data[0]) * 4;
 	int i = 0;
 
 	FILE* fptr;
@@ -105,27 +105,6 @@ int main(int argc, char* args[]) {
 	fclose(fptr);
 
 	printf("%s file generated in %.3fs", name, time);
-
-	/*
-	* BitNo is most importent thing in this algorithm
-	* Here I have choosen 6 as bitNo because there is not a single bit 1 after 6th bit in any number.
-	*
-	*                   <- bitNo
-	*     10 9 8 7 6 5 4 3 2 1 0
-	* 70:  0 0 0 0 1 0 0 0 1 1 0
-	* 80:  0 0 0 0 1 0 1 0 0 0 0
-	* 30:  0 0 0 0 0 0 1 1 1 1 0
-	* 60:  0 0 0 0 0 1 1 1 1 0 0
-	* 50:  0 0 0 0 0 1 1 0 0 1 0
-	* 90:  0 0 0 0 1 0 1 1 0 1 0
-	* 20:  0 0 0 0 0 0 1 0 1 0 0
-	* 40:  0 0 0 0 0 1 0 1 0 0 0
-	* 90:  0 0 0 0 1 0 1 1 0 1 0
-	* 15:  0 0 0 0 0 0 0 1 1 1 1
-	*
-	* So either you have to determine bitNo from your input data manuly or can
-	* choose maximum number of bits in your data type like signed int(4byte)-> 31bit.
-	*/
 
 	return 0;
 }
