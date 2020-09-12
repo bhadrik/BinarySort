@@ -9,7 +9,7 @@ Binary sort is an algorithm that sorts the given array of numbers based on its b
 5. It will use Data.txt file as an input to the algorithm and sort thos data and will generate "Sorted Data.txt" file which is sorted output.
 
 # Working of an algorithm
-* This algorithm is work on binery value of the numbers.
+* This algorithm is based on binary value of the numbers.
 
 ```
 8 - 1000
