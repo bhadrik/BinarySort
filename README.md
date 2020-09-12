@@ -8,12 +8,6 @@ Binary sort is an algorithm that sorts the given array of numbers based on its b
 4. Then run "BinarySort.exe" file using following command: "BinarySort.exe 10000 Data.txt" for windows & "./BinarySort 10000 Data.txt" for linux
 5. It will use Data.txt file as an input to the algorithm and sort thos data and will generate "Sorted Data.txt" file which is sorted output.
 
-```
-git status
-git add
-git commit
-```
-
 # Working of an algorithm
 * This algorithm is work on binery value of the numbers.
 
@@ -25,8 +19,8 @@ git commit
     4th bit         4th bit(R)         4th bit(R)         3rd bit(L)         3rd bit(L)
 +-----------+    +-------+ +---+    +-------+ +---+    +-------+ +---+    +---+ +---+ +---+     Everything is fixed
 | 8 | 5 | 6 | -> | 6 | 5 | | 8 | -> | 6 | 5 | | 8 | -> | 6 | 5 | | 8 | -> | 5 | | 6 | | 8 | ->  so arry is solved
-+-----------+    +-------+ +---+    +-------+ +---+    +-------+ +---+    +---+ +---+ +---+     easily withoud 
-  L       U        L   U     U=L      L   U    Fix       L   U    Fix      Fix   Fix   Fix      comparision.
++-----------+    +-------+ +---+    +-------+ +---+    +-------+ +---+    +---+ +---+ +---+     easily without 
+  L       U        L   U     U=L      L   U    Fix       L   U    Fix      Fix   Fix   Fix      comparing single no.
   
  Input array     Found 4th bit of   Recursion call     Recusion call for  Found 3rd bit of
                  8 is *1* so swap   right array is     left array for     6 is *1* so swap
