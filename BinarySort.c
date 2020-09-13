@@ -27,7 +27,7 @@ void displayData(int* data) {
 void binarySort(int* data, int bitNo, int lowerBound, int upperBound) {
 
 	//Start form given bit number in "bitNo" and goes into a loop until it becomes 0
-	if (bitNo == 0) return;
+	if (bitNo < 0) return;
 
 	int l_backup = lowerBound, u_backup = upperBound, i;
 
@@ -70,6 +70,7 @@ int main(int argc, char* args[]) {
 
 	FILE* fptr;
 		
+	//READ file data
 	if (argc == 3 || argc == 0)
 		fptr = fopen(args[2], "r");
 	else
@@ -79,20 +80,22 @@ int main(int argc, char* args[]) {
 
 	while (fscanf(fptr, "%d", &data[i]) == 1) { i++; }
 
-	startTime = clock();
-	//printf("Start: %f\n", (float)startTime);
 
-	//First binarySort call
+
+	startTime = clock();
+
+	//Perform BinarySort
 	binarySort(data, bitNo-1, lowerBound, upperBound);
 
 	endTime = clock();
-	fclose(fptr);
-
-	//printf("End: %f\n", (float)endTime);
 
 	time = ((double)(endTime - startTime)) / CLOCKS_PER_SEC;
 
-	char name[20]="Sorted ";
+	fclose(fptr);
+
+
+	//WRITE data into file
+	char name[20]="Sorted_";
 
 	strcat(name, args[2]);
 
