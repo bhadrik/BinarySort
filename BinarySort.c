@@ -68,10 +68,10 @@ int main(int argc, char* args[]) {
 	int lowerBound = 0, upperBound = N - 1, bitNo = sizeof(data[0]) * 4;
 	int i = 0;
 
-	FILE* fptr;
+	FILE* fptr = NULL;
 		
 	//READ file data
-	if (argc == 3 || argc == 0)
+	if (argc == 3)
 		fptr = fopen(args[2], "r");
 	else
 		printf("Check given argument!\n");
@@ -79,8 +79,6 @@ int main(int argc, char* args[]) {
 	if (fptr == NULL) { printf("File not found!!\n"); exit(1); }
 
 	while (fscanf(fptr, "%d", &data[i]) == 1) { i++; }
-
-
 
 	startTime = clock();
 
