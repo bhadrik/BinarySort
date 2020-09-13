@@ -33,3 +33,5 @@
 
 #Output files
 *.txt
+/.vs
+*
