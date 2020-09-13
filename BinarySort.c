@@ -24,35 +24,35 @@ void displayData(int* data) {
 }
 
 //Perform binery sort
-void binarySort(int* data, int bitNo, int* lowerBound, int* upperBound) {
+void binarySort(int* data, int bitNo, int lowerBound, int upperBound) {
 
 	//Start form given bit number in "bitNo" and goes into a loop until it becomes 0
 	if (bitNo == 0) return;
 
-	int l_backup = *lowerBound, u_backup = *upperBound, i;
+	int l_backup = lowerBound, u_backup = upperBound, i;
 
-	if (*upperBound - *lowerBound == 0) return;
+	if (upperBound - lowerBound == 0) return;
 
 	//Scaning all the numbers between location "lowerBound" to "upperBound"
-	for (i = l_backup; i <= *upperBound; i++) {
+	for (i = l_backup; i <= upperBound; i++) {
 		if ((data[i] >> bitNo) & 1) {
-			if (i != *upperBound) {
-				swap(data, i, *upperBound);
+			if (i != upperBound) {
+				swap(data, i, upperBound);
 				i--;
 			}
-			*upperBound -= 1;
+			upperBound--;
 		}
 	}
 
-	int hold = *upperBound;
+	int hold = upperBound;
 
-	if (*upperBound == u_backup)
-		hold = *lowerBound;
+	if (upperBound == u_backup)
+		hold = lowerBound;
 	else
-		hold = *upperBound + 1;
+		hold = upperBound + 1;
 
 	//Again calling for divided subarry, and now for (bitNo - 1)th bit
-	binarySort(data, (bitNo - 1), &hold, &u_backup);
+	binarySort(data, (bitNo - 1), hold, u_backup);
 	binarySort(data, (bitNo - 1), lowerBound, upperBound);
 }
 
@@ -83,7 +83,7 @@ int main(int argc, char* args[]) {
 	//printf("Start: %f\n", (float)startTime);
 
 	//First binarySort call
-	binarySort(data, bitNo-1, &lowerBound, &upperBound);
+	binarySort(data, bitNo-1, lowerBound, upperBound);
 
 	endTime = clock();
 	fclose(fptr);
@@ -92,9 +92,8 @@ int main(int argc, char* args[]) {
 
 	time = ((double)(endTime - startTime)) / CLOCKS_PER_SEC;
 
-	char name[20]="";
+	char name[20]="Sorted ";
 
-	strcpy(name, "Sorted ");
 	strcat(name, args[2]);
 
 	fptr = fopen(name, "w");
@@ -103,6 +102,8 @@ int main(int argc, char* args[]) {
 		fprintf(fptr, "%d ", data[i]);
 
 	fclose(fptr);
+
+	free(data);
 
 	printf("%s file generated in %.3fs", name, time);
 
