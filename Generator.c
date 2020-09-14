@@ -5,11 +5,7 @@
 
 int main(int argc, char* args[])
 {
-
-    int lower = 645646, upper = 2147483647;
-
     srand(time(0));
-
     FILE* fptr;
 
     if (argc == 3)
@@ -23,16 +19,12 @@ int main(int argc, char* args[])
     }
 
     for (i = 0; i < N; i++) {
-        //int val = (rand() % (upper - lower + 1)) + lower;
-        int val = rand() % upper;
-        if (val < 40000 && rand() % 1) {
-            val = rand() % upper;
-        }
-
+        //it will generate value between the range 0 - RAND_MAX [32767]. Unfortunatly RAND_MAX is constant.
+        int val = rand();
         fprintf(fptr, "%d ", val);
     }
 
     fclose(fptr);
-    printf("Random data has been genreated");
+    printf("Random data has been genreated\n");
     return 0;
 }
