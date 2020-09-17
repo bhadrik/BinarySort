@@ -33,7 +33,6 @@ int findBitNo(int* data){
 		i=0;
 		while(i<N){
 			if((data[i] >> tempBit) & 1){
-				// printf("bitNo: %d data[%d]=%d\n",tempBit,i,data[i]);
 				return ++tempBit;
 			}
 			i++;
@@ -47,32 +46,26 @@ int findBitNo(int* data){
 //Perform binery sort
 void binarySort(int* data, int bitNo, int lowerBound, int upperBound) {
 
-	//Start form given bit number in "bitNo" and goes into a loop until it becomes 0
-	if (bitNo < 0) return;
-
 	int l_backup = lowerBound, u_backup = upperBound, i;
+    bool letsGo = false;
 
-	if (upperBound - lowerBound == 0) return;
-
-    // int p = 10;
+loopAgain:
 	//Scaning all the numbers between location "lowerBound" to "upperBound"
-    // while(p){
-    // printf("At: %d (%d, %d)\n",bitNo,l_backup+1,upperBound+1);
 	for (i = l_backup; i <= upperBound; i++) {
 		if ((data[i] >> bitNo) & 1) {
+            letsGo = true;
 			if (i != upperBound) {
-                // printf("[%d <= %d] -> ",i, upperBound);
 				swap(data, i, upperBound);
 				i--;
 			}
-            // else printf("Equal: ");
 			upperBound--;
 		}
-        // else printf("[%d :N %d] -> ",i, upperBound);
-        // displayData(data);
 	}
-    // p--;
-    // }
+
+    if(!letsGo && bitNo > 0){
+        bitNo--;
+        goto loopAgain;
+    }
 
 	int hold = upperBound;
 
@@ -82,57 +75,57 @@ void binarySort(int* data, int bitNo, int lowerBound, int upperBound) {
 		hold = upperBound + 1;
 
 	//Again calling for divided subarry, and now for (bitNo - 1)th bit
-    // printf("->\n");
-	binarySort(data, (bitNo - 1), hold, u_backup);
-    // printf("<-\n");
-    // printf("->\n");
-	binarySort(data, (bitNo - 1), lowerBound, upperBound);
-    // printf("<-\n");
+    if(bitNo > 0 && (hold != u_backup || lowerBound != upperBound)){
+    	binarySort(data, (bitNo - 1), hold, u_backup);
+	    binarySort(data, (bitNo - 1), lowerBound, upperBound);        
+    }
 }
 
 int main(int argc, char* args[]) {
-	if (argc == 3)
-		N = atoi(args[1]);
-	else
-		printf("Check given argument!\n");
 
-	clock_t startTime, endTime;
-	double time;
-	int data[N];
-	int lowerBound = 0, upperBound = N - 1, bitNo = _INTEGRAL_MAX_BITS/2;
-	int i = 0;
-
+	long startTime, endTime, time;
+	int lowerBound = 0, upperBound = 0, bitNo = _INTEGRAL_MAX_BITS/2, i = 0;
+    int* data = NULL;
 	FILE* fptr = NULL;
+    int size; char fileName[20];
+
+    if(argc == 3){
+		size = atoi(args[1]);
+		strcpy(fileName, args[2]);
+	}
+	else{
+		size = 10000;
+		strcpy(fileName, "Data.txt");
+		printf("Default size:%d File name:%s!\n",size, fileName);
+	}
+
+	N = size;
+	data = (int*)malloc(sizeof(int)*N);
+	upperBound = N -1;
+
 		
-	//READ file data
-	if (argc == 3)
-		fptr = fopen(args[2], "r");
-	else
-		printf("Check given argument!\n");
+	//READ from file to an array -----------------
+	fptr = fopen(fileName, "r");
 
 	if (fptr == NULL) { printf("File not found!!\n"); exit(1); }
 
 	while (fscanf(fptr, "%d", &data[i]) == 1) { i++; }
 
+	fclose(fptr);
+	//----------------------------------------
+
+
 	startTime = clock();
 
-    bitNo = findBitNo(data);
-	printf("Found: %d\n", bitNo);
-	
-	//Perform BinarySort
-	binarySort(data, bitNo-1, lowerBound, upperBound);
+    // bitNo = findBitNo(data);  //Exteranal function to optimize bitNo
+    binarySort(data, bitNo-1, lowerBound, upperBound);
 
 	endTime = clock();
 
-	time = ((double)(endTime - startTime)) / CLOCKS_PER_SEC;
-
-	fclose(fptr);
-
-
-	//WRITE data into file
+    //WRITE data into file -------------------
 	char name[20]="Sorted_";
 
-	strcat(name, args[2]);
+	strcat(name, fileName);
 
 	fptr = fopen(name, "w");
 
@@ -140,8 +133,11 @@ int main(int argc, char* args[]) {
 		fprintf(fptr, "%d ", data[i]);
 
 	fclose(fptr);
+	//---------------------------------------
 
 	free(data);
+
+    time = (endTime - startTime) / CLOCKS_PER_SEC;
 
 	printf("%s file generated in %.3fs", name, time);
 
