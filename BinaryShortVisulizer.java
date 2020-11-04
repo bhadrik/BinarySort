@@ -35,7 +35,7 @@ public class Main {
         logTracer.printf("scanning bitNo:%s for (%s, %s)\n", bitNo, lowerBound, upperBound);
         chartTracer.set(data);
         chartTracer.select(lowerBound, upperBound);
-        chartTracer.delay();
+        Tracer.delay();
     
 
 	    int l_backup = lowerBound, u_backup = upperBound, i;
@@ -44,31 +44,29 @@ public class Main {
         do{
     	    //Scaning all the numbers between location "lowerBound" to "upperBound"
         	for (i = l_backup; i <= upperBound; i++) {
-        	    int temp = (data[i] >> bitNo) & 1;
-        	    boolean condition;
-        	    if(temp >= 1){
-        	        condition = true;
-        	    }
-        	    else{
-        	        condition = false;
-        	    }
-        		if (condition) {
-                    letsGo = true;
-        			if (i != upperBound) {
-        			 //   chartTracer.select(i);
-        			 //   chartTracer.select(upperBound);
-        			 //   chartTracer.delay();
-        			    logTracer.printf("swap %s and %s\n",data[i],data[upperBound]);
-        				swap(data, i, upperBound);
-        				chartTracer.set(data);
-                        chartTracer.select(lowerBound, upperBound);
-                        chartTracer.delay();
-        				// chartTracer.deselect(i);
-        				// chartTracer.deselect(upperBound);
-        				i--;
-        			}
-        			upperBound--;
-        		}
+			int temp = (data[i] >> bitNo) & 1;
+			boolean condition;
+			if(temp >= 1){
+				condition = true;
+			}
+			else{
+				condition = false;
+			}
+			if (condition) {
+				letsGo = true;
+				if (i != upperBound) {
+					logTracer.printf("swap %s and %s\n",data[i],data[upperBound]);
+
+					swap(data, i, upperBound);
+
+					chartTracer.set(data);
+					chartTracer.select(lowerBound, upperBound);
+					Tracer.delay();
+					i--;
+				}
+				chartTracer.deselect(upperBound);
+				upperBound--;
+			}
         	}
         	
         	bitNo--;
@@ -93,10 +91,16 @@ public class Main {
     	}
     }
 
-    private static void swap(Integer [] data, int i1, int i2) {
-        int temp = data[i1];
-	    data[i1] = data[i2];
-	    data[i2] = temp;
+    private static void swap(Integer [] data, int x, int y) {
+        int temp = data[x];
+	    data[x] = data[y];
+	    data[y] = temp;
+	    
+	chartTracer.patch(x, data[x]);
+        chartTracer.patch(y, data[y]);
+        Tracer.delay();
+        chartTracer.depatch(x);
+        chartTracer.depatch(y);
     }
     
     private static void binaryOfAllNumbers(){
