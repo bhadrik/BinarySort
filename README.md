@@ -9,7 +9,7 @@ Binary sort is an algorithm that sorts the given array of numbers based on its b
 5. It will use Data.txt file as an input to the algorithm and sort thos data and will generate "Sorted Data.txt" file which is sorted output.
 
 # Visulizer
-Copy and past the *BinarySortVisulizer.**java*** file content to new java file in *https://algorithm-visualizer.org/scratch-paper/new*
+Copy and past the *BinarySortVisulizer.**java*** file content to new java file at [Algorithm-visualizer](https://algorithm-visualizer.org/scratch-paper/new)
 First Build and then play the algorithm :)
 
 
