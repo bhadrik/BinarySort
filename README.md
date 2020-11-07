@@ -39,5 +39,5 @@ First Build and then play the algorithm :)
 T(n) = T(n/x) + T(n-n/x) + n
 which is around
 T(n) = 2T(n/2) + n  (Merge sort complexity)
-so, **T(n) = O(nlog(n))**
+so, T(n) = O(nlog(n))
 ```
