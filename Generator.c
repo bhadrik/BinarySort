@@ -18,10 +18,12 @@ int main(int argc, char* args[])
         exit(1);
     }
 
+    printf("Going to generat\n");
+
     for (i = 0; i < N; i++) {
         //it will generate value between the range 0 - RAND_MAX [32767]. Unfortunatly RAND_MAX is constant.
-        int val = rand();
-        fprintf(fptr, "%d ", val);
+        unsigned int val = rand() * rand() ;
+        fprintf(fptr, "%u ", val);
     }
 
     fclose(fptr);
