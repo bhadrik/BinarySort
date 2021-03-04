@@ -44,7 +44,7 @@ int findBitNo(int* data){
 }
 
 //Perform binery sort
-void binarySort(int* data, int bitNo, int lowerBound, int upperBound) {
+void binarySort(unsigned int* data, int bitNo, int lowerBound, int upperBound) {
 
 	int l_backup = lowerBound, u_backup = upperBound, i;
 	bool letsGo = false;
@@ -83,8 +83,8 @@ loopAgain:
 int main(int argc, char* args[]) {
 
 	long startTime, endTime, time;
-	int lowerBound = 0, upperBound = 0, bitNo = _INTEGRAL_MAX_BITS/2, i = 0;
-	int* data = NULL;
+	int lowerBound = 0, upperBound = 0, bitNo = __INTMAX_WIDTH__/2, i = 0;
+	unsigned int* data = NULL;
 	FILE* fptr = NULL;
 	int size; char fileName[20];
 	
@@ -108,7 +108,7 @@ int main(int argc, char* args[]) {
 
 	if (fptr == NULL) { printf("File not found!!\n"); exit(1); }
 
-	while (fscanf(fptr, "%d", &data[i]) == 1) { i++; }
+	while (fscanf(fptr, "%u", &data[i]) == 1) { i++; }
 
 	fclose(fptr);
 	//----------------------------------------
@@ -129,7 +129,7 @@ int main(int argc, char* args[]) {
 	fptr = fopen(name, "w");
 	
 	for (i = 0; i < N; i++)
-		fprintf(fptr, "%d ", data[i]);
+		fprintf(fptr, "%u ", data[i]);
 	
 	fclose(fptr);
 	//---------------------------------------
