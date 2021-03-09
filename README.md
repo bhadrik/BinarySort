@@ -1,5 +1,5 @@
 # BinarySort
-Binary sort is an algorithm that sorts the given array of numbers based on its binary value.
+Binary sort is an algorithm that sorts the given numbers **without even comparing** a single digit.
 
 # How to use
 1. First compile both C file using following command: "gcc -o BinarySort BinarySort.c" & "gcc -o Generator Generator.c"
@@ -7,6 +7,11 @@ Binary sort is an algorithm that sorts the given array of numbers based on its b
 3. It will generate Data.txt file, filled with 10000 random numbers.
 4. Then run "BinarySort.exe" file using following command: "BinarySort.exe 10000 Data.txt" for windows & "./BinarySort 10000 Data.txt" for linux
 5. It will use Data.txt file as an input to the algorithm and sort thos data and will generate "Sorted Data.txt" file which is sorted output.
+
+## or
+
+1. Run run.bat file and provide inputs
+2. All done
 
 # Visulizer
 Copy and past the *BinarySortVisulizer.**java*** file content to new java file at [Algorithm-visualizer](https://algorithm-visualizer.org/scratch-paper/new)
