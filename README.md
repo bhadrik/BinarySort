@@ -13,7 +13,7 @@ Binary sort is an algorithm that sorts the given numbers **without even comparin
 1. Run run.bat file and provide inputs
 2. All done
 
-# Visulizer
+# Visualizer
 Copy and past the *BinarySortVisulizer.**java*** file content to new java file at [Algorithm-visualizer](https://algorithm-visualizer.org/scratch-paper/new)
 First Build and then play the algorithm :)
 
